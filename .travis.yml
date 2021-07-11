@@ -9,6 +9,24 @@ branches:
 before_install:
   - chmod +x gradlew
 
+before_deploy:
+  - zip -r freelec_bulletinBoard *
+  - mkdir -p deploy
+  - mv freelec-bulletinBoard.zip deploy/freelec-bulletinBoard.zip
+
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: : $AWS_SECRET_KEY
+
+    bucket: freelec-bulletin-board-build
+    region: ap-northeast-2
+    skip_cleanup: true
+    acl: private
+    local_dir: deploy
+    wait-until-deployed: true
+
+
 # Travis CI 서버의 Home
 cache:
   directories:
