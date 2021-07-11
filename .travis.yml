@@ -10,9 +10,8 @@ before_install:
   - chmod +x gradlew
 
 before_deploy:
-  - zip -r freelec_bulletinBoard *
+  - zip -r freelec-bulletinBoard *
   - mkdir -p deploy
-  - dir
   - mv freelec-bulletinBoard.zip deploy/freelec-bulletinBoard.zip
 
 deploy:
