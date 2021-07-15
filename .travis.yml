@@ -27,6 +27,17 @@ deploy:
     on:
       all_branches: true #master branch가 아닐 경우 추가
 
+  - provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: freelec-bulletin-board-build
+    key: freelec-bulletinBoard.zip
+    bundle_type: zip
+    application: freelec-bulletin-board
+    deployment_group: freelec-bulletin-board-group
+    region: ap-northeast-2
+    wait-until-deployed: true
+
 
 # Travis CI 서버의 Home
 cache:
