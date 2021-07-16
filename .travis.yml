@@ -37,6 +37,8 @@ deploy:
     deployment_group: freelec-bulletin-board-group
     region: ap-northeast-2
     wait-until-deployed: true
+    on:
+      all_branches: true
 
 # Travis CI 서버의 Home
 cache:
