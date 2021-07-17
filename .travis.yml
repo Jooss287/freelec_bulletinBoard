@@ -10,9 +10,16 @@ before_install:
   - chmod +x gradlew
 
 before_deploy:
-  - zip -r freelec-bulletinBoard *
-  - mkdir -p deploy
-  - mv freelec-bulletinBoard.zip deploy/freelec-bulletinBoard.zip
+#  - zip -r freelec-bulletinBoard *
+#  - mkdir -p deploy
+#  - mv freelec-bulletinBoard.zip deploy/freelec-bulletinBoard.zip
+  - mkdir -p before-deploy
+  - cp scripts/*.sh before-deploy/
+  - cp appspec.yml before-deploy/
+  - cp build/libs/*.jar before-deploy/
+  - cp before-deploy && zip -r before-deploy
+  - cd ../ && mkdir -p deploy
+  - mv before-deploy/before-deploy.zip deploy/freelec-bulletinBiard.zip
 
 deploy:
   - provider: s3
